@@ -1,0 +1,7 @@
+cInform make comment:
+find:   ^([^-]*)cInform
+repl:   $1-- cInform
+
+cInform uncomment
+find:   -- cInform
+repl:   cInform
