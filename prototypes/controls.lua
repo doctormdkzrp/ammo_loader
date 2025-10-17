@@ -53,6 +53,12 @@ controls.toggleRangesKey = {
     name = "ammo-loader-key-toggle-chest-ranges",
     key_sequence = "CONTROL + SHIFT + ALT + SLASH"
 }
+controls.manualScanKey = {
+    type = "custom-input",
+    name = "ammo-loader-key-manual-scan",
+    key_sequence = "CONTROL + SHIFT + ALT + R",
+    consuming = "game-only"
+}
 -- controls.cursorPos = {
 --     type = "custom-input",
 --     name = names.customInputs.cursorPos,

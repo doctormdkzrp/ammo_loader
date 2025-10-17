@@ -174,6 +174,26 @@ function createdQ.checkAllEntities(opts)
     -- end
     cInform("Queued ", createdQ.size(), " entities for analysis.")
 end
+
+---Scan entities on a specific surface and add them to the queue
+---@param surface any The surface to scan (LuaSurface)
+function createdQ.checkSurfaceEntities(surface)
+    if not surface or not surface.valid then 
+        cInform("checkSurfaceEntities: invalid surface")
+        return 
+    end
+    
+    local names, protos = createdQ.getCheckEntityNames()
+    local ents = surface.find_entities_filtered({name = names})
+    
+    ctInform("Queueing entities on surface ", surface.name, "...")
+    for i = 1, #ents do
+        local ent = ents[i]
+        createdQ.push(ent)
+    end
+    ctInform("Queued ", #ents, " entities from surface ", surface.name)
+end
+
 function createdQ.waitQAdd(entName) createdQ.waitQ():push({name = entName, tick = gSets.tick() + 10}) end
 
 function createdQ.tickWaitQ()

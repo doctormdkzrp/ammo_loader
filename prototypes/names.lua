@@ -46,7 +46,8 @@ local names = {
         resetMod = "ammo-loader-key-reset",
         returnItems = "ammo-loader-key-return",
         toggleEnabled = "ammo-loader-key-toggle-enabled",
-        toggleChestRange = "ammo-loader-key-toggle-chest-ranges"
+        toggleChestRange = "ammo-loader-key-toggle-chest-ranges",
+        manualScan = "ammo-loader-key-manual-scan"
     },
     customInputs = {
         cursorPos = "ammo-loader-key-cursor-position",

@@ -536,6 +536,29 @@ end
 
 onEvents(Handlers.keyChestRangeToggle, { protoNames.keys.toggleChestRange })
 
+function Handlers.keyManualScan(event)
+    local player = game.players[event.player_index]
+    if not player then return end
+    
+    ctInform("Manual scan initiated by ", player.name)
+    
+    -- Check if currently on a surface
+    local currentSurface = player.surface
+    if currentSurface and currentSurface.valid then
+        -- Scan current surface
+        ctInform("Scanning current surface: ", currentSurface.name)
+        createdQ.checkSurfaceEntities(currentSurface)
+        
+        -- Also offer to scan all surfaces if player holds SHIFT
+        if event.shift then
+            ctInform("Scanning all surfaces...")
+            version.update()
+        end
+    end
+end
+
+onEvents(Handlers.keyManualScan, { protoNames.keys.manualScan })
+
 function Handlers.onPlayerSelectionChangedClearRenders(e)
     local player = util.eventPlayer(e)
     if (not player) then return end
